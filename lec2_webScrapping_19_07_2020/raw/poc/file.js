@@ -18,5 +18,25 @@ let pKaText = ch("p").text();
 let aTags = ch("a");
 let aKaData = aTags.text();
 
-console.log(aTags.length);
-console.log(aKaData);
+// console.log(aTags.length);
+// console.log(aKaData);
+
+//classes 
+// let pTags = ch("p");
+// let pText = pTags.text();
+// console.log(pText);
+
+let pTag = ch(".first");
+let pText = pTag.text();
+// console.log(pText);
+
+let pTags = ch(".first.firstp");
+let pTagsKatext = pTags.text();
+// console.log(pTagsKatext);
+
+let aTag = ch("#unique");
+console.log(aTag.text());
+
+
+
+
