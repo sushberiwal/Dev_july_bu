@@ -1,10 +1,12 @@
 let request = require("request");
 let cheerio = require("cheerio");
 let fs = require("fs");
+const findMatch = require("./match");
 
-let link = "https://www.espncricinfo.com/scores/series/8039/season/2015/icc-cricket-world-cup?view=results";
 
-request(link , dataReceiver);
+function findAllMatches(link){
+    request(link , dataReceiver);
+}
 
 function dataReceiver(error , response , html){
     if(error ==null && response.statusCode == 200){
@@ -24,10 +26,13 @@ function parseData(html){
 
     for(let i=0 ; i<allCards.length ; i++){
         let summary = ch(allCards[i]).find("p span").text();
-        console.log(summary);
+        // console.log(summary);
         let link = ch(allCards[i]).find(".match-cta-container a[data-hover='Scorecard']").attr("href");
         let completeLink = "https://www.espncricinfo.com"+link;
-        console.log(completeLink);
-        console.log("#################");
+        // console.log(completeLink);
+        findMatch(completeLink);
+        // console.log("#################");
     }
 }
+
+module.exports = findAllMatches;
